@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CustomerData.Models.Customer>
+
+@{
+    ViewBag.Title = "Customer";
+}
+
+
+<h2>Customers</h2>
+
+<p>
+    @Html.ActionLink("New Customer", "New")
+</p>
+
+@if(Model.Count() != 0)
+{
+    <table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+         <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+         <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+    </tr>
+
+    @foreach(var customer in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => customer.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => customer.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => customer.Address)
+            </td>
+             <td>
+                @Html.DisplayFor(model => customer.Phone)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=customer.Id, action="edit" }) |
+                @Html.ActionLink("Details", "Details", new { id=customer.Id,  }) |
+                @Html.ActionLink("Delete", "Delete", new { id=customer.Id })
+            </td>
+    </tr>
+    }
+    </table>
+}
+else
+{
+    <h3>Not Found</h3>
+}
