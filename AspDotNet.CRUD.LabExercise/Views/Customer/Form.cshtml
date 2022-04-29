@@ -8,6 +8,9 @@
     <form asp-controller="customer" asp-action="save" method="post">
         @Html.Hidden("action",action)
         <table border="0" cellpadding="2" cellspacing="2">
+            <p>
+                @Html.ActionLink("Back","Index")
+            </p>
             @if (action != null && action.ToString().ToLower().Equals("edit"))
             {
                 <input asp-for="Id" type="hidden" />
